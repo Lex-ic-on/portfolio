@@ -2,8 +2,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	position: absolute;
 
-	padding-top: calc(var(--padding-td) - var(--scale-m));
+	top: var(--scale-xs);
+
 	padding-left: var(--padding-lr);
 }
 

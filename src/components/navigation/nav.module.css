@@ -10,4 +10,7 @@
 
 	padding-top: var(--padding-td);
 	padding-right: var(--padding-lr);
+
+	font-size: var(--scale-s);
+	line-height: var(--scale-m);
 }

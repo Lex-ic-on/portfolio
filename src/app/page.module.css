@@ -2,12 +2,22 @@
   display: flex;
 	flex-direction: column;
 
-  position: absolute;
-  top: 50dvh;
-  left: 50dvw;
-
+  margin-top: calc(50dvh - var(--scale-m));
+  margin-left: 50dvw;
 }
 
 .bold{
   font-weight: 600;
+}
+
+.description{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+
+  max-width: calc(60 * var(--scale-s));
+
+  bottom: var(--scale-m);
+
+  margin-left: 1.25dvw;
 }

@@ -1,0 +1,19 @@
+.logo{
+	height: var(--scale-s);
+}
+
+.footerNav{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: flex-end;
+
+	position: absolute;
+	bottom: var(--scale-xs);
+	right: 1.25dvw;
+
+	gap: var(--scale-m);
+
+	font-size: var(--scale-s);
+	line-height: var(--scale-m);
+}

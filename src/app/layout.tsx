@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_JP, Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 const Spacegrotesk = Space_Grotesk({ subsets: ['latin']})
 const NotoJP = Noto_Sans_JP({ subsets: ['latin'] })
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={Spacegrotesk.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

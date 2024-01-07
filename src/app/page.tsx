@@ -19,6 +19,11 @@ export default function Home() {
           <Link href='mailto:contact.4194304@gmail.com'><h3 className={styles.bold}>Contact me &gt;&gt;&gt;</h3></Link>
         </li>
       </ul>
+      <div className={styles.description}>
+        <p>Hello, I’m Lex.</p>
+        <p>I mainly work DTP, typography (incl. on-screen design,) UI, and web design. I’m glad to see you, and if you would like, please follow my Twitter.</p>
+        <p>If you want to create something new or good, want to prove some problems with design, I’m ready to cooperate with me and please send me a message.</p>
+      </div>
     </main>
   )
 }
