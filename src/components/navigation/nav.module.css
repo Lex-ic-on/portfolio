@@ -1,4 +1,13 @@
 .navigation{
 	font-weight: 600;
 	font-style: normal;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+
+	gap: var(--scale-s);
+
+	padding-top: var(--padding-td);
+	padding-right: var(--padding-lr);
 }

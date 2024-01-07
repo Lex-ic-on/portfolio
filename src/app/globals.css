@@ -14,6 +14,10 @@
 	--scale-2xl: clamp(4.25rem, -1rem + 16.8vw, 6.875rem);
 	--scale-3xl: clamp(6.875rem, -1.625rem + 27.2vw, 11.125rem);
 	--scale-4xl: clamp(11.125rem, -2.625rem + 44vw, 18rem);
+
+	/* padding scale */
+	--padding-lr: 1.25dvw;
+	--padding-td: 1dvh;
 }
 
 /* light & dark theme colour set */
@@ -21,12 +25,12 @@
 	:root{
 		--color-background: var(--munsell-n9);
 		--color-gray: var(--munsell-n6);
-		--color-contrast: var(--munsell-n2);
+		--color-contrast: var(--munsell-n1);
 	}
 }
 @media (prefers-color-scheme: dark){
 	:root {
-		--color-background: var(--munsell-n1);
+		--color-background: var(--munsell-n2);
 		--color-gray: var(--munsell-n6);
 		--color-contrast: var(--munsell-n9);
 	}
