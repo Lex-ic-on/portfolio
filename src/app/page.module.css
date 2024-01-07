@@ -1,0 +1,13 @@
+.portalLink{
+  display: flex;
+	flex-direction: column;
+
+  position: absolute;
+  top: 50dvh;
+  left: 50dvw;
+
+}
+
+.bold{
+  font-weight: 600;
+}
