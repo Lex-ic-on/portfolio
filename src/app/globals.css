@@ -37,6 +37,7 @@ body, h1, h2, h3, h4, p, h5, h6, figure, ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	font-weight: 300;
 }
 *, *::before, *::after{
 	box-sizing: border-box;
@@ -53,31 +54,31 @@ body {
 }
 
 /* typesetting */
-.type-xs, h5{
+.type_xs, h5{
 	font-size: var(--scale-xs);
 	line-height: var(--scale-s);
 }
-.type-s, p, h4{
+.type_s, p, h4{
 	font-size: var(--scale-s);
 	line-height: var(--scale-m);
 }
-.type-m, h3{
+.type_m, h3{
 	font-size: var(--scale-m);
 	line-height: var(--scale-l);
 }
-.type-l{
+.type_l{
 	font-size: var(--scale-l);
 	line-height: var(--scale-xl);
 }
-.type-xl, h2{
+.type_xl, h2{
 	font-size: var(--scale-xl);
 	line-height: var(--scale-2xl);
 }
-.type-2xl{
+.type_2xl{
 	font-size: var(--scale-2xl);
 	line-height: var(--scale-3xl);
 }
-.type-3xl, h1{
+.type_3xl, h1{
 	font-size: var(--scale-3xl);
 	line-height: var(--scale-4xl);
 }
