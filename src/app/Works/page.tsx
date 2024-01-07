@@ -13,11 +13,14 @@ export default function Home() {
       />
       <ul className={styles.portalLink}>
         <li>
-          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="me"/>
+          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="private"/>
         </li>
         <li>
-          <Link href='./Works'><figure>figure</figure></Link>
-        </li>
+          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="private"/>
+		</li>
+		 <li>
+          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="private"/>
+		</li>
 		</ul>
     </main>
   )

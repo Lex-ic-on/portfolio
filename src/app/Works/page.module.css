@@ -1,3 +1,16 @@
 .bold{
   font-weight: 600;
 }
+
+.portalLink {
+	margin-top: 60dvh;
+	
+	display: flex;
+	justify-content: left;
+	flex-wrap: wrap;
+}
+
+.portalLink li{
+	width: 50%;
+	margin-bottom: var(--scale-xl);
+}
