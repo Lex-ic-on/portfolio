@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Hero from '../components/hero-tier1'
 import styles from './page.module.css'
