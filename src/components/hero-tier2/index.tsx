@@ -6,5 +6,5 @@ export default function T2({ dir, title }) {
 			<h5 className={styles.dir}>{dir}</h5>
 			<h1 className={styles.pageTitle}>{title}</h1>
 		</div>
-		)
+	)
 }

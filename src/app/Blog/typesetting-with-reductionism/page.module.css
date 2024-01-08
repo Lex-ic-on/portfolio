@@ -1,0 +1,5 @@
+.contents{
+  display: flex;
+
+  max-width: calc(60 * var(--scale-s));
+}
