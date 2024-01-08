@@ -1,8 +1,16 @@
 import styles from './thumb-work.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ReactNode } from 'react'
 
-export default function Thumbnail({ url, src, title, cl }) {
+interface Props{
+	url: ReactNode;
+	src: ReactNode;
+	title: ReactNode;
+	cl: ReactNode;
+}
+
+export default function Thumbnail({ url, src, title, cl }:Props) {
 	return (
 		<Link href={url} className={styles.thumb}>
 			<Image src={src} layout="responsive" width={1920} height={1080} alt=""/>

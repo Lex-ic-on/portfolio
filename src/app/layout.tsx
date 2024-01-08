@@ -1,4 +1,5 @@
 import React from 'react'
+import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Noto_Sans_JP, Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'

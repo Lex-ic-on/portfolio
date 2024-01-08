@@ -1,7 +1,15 @@
 import styles from './thumb-blog.module.css'
 import Link from 'next/link'
+import { ReactNode } from 'react'
 
-export default function Thumbnail({ url, date, title, description }) {
+interface Props{
+	url: ReactNode;
+	date: ReactNode;
+	title: ReactNode;
+	description: ReactNode;
+}
+
+export default function Thumbnail({ url, date, title, description }:Props) {
 	return (
 		<Link href={url} className={styles.thumb}>
 			<h5 className={styles.date}>{date}</h5>

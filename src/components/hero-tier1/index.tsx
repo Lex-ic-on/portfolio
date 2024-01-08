@@ -1,6 +1,13 @@
 import styles from './hero-t1.module.css'
+import { ReactNode } from 'react'
 
-export default function T1({ dir, title, statsOn=false }) {
+interface Props{
+	dir: ReactNode;
+	title: ReactNode;
+	statsOn: ReactNode;
+}
+
+export default function T1({ dir, title, statsOn=false }:Props) {
 	return (
 		<div className={styles.hero}>
 			<h5 className={styles.dir}>{dir}</h5>
