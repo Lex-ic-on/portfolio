@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { ReactNode } from 'react'
 
 interface Props{
-	url: ReactNode;
-	src: ReactNode;
+	url: string;
+	src: string;
 	title: ReactNode;
 	cl: ReactNode;
 }
