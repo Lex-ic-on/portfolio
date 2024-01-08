@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import Hero from '../../../components/hero-tier2'
 import styles from './page.module.css'
+import React from 'react'
 
 export default function Home() {
   return (
@@ -10,10 +10,13 @@ export default function Home() {
     	<Hero
     	    dir="1exicon.com/Works/built-my-own-page"
 			title="Lex website"
-    	/>
+		  />
+		<div className={styles.demo}>
+			<Image src='/(Works)/built-my-own-page/demo.png' width={1920} height={1080} alt='' className={styles.image} />
+		</div>
 		<div className={styles.contents}>
-			<p>組版は文字を組むことであり、文字を書くときに文字を組むという行為からは逃れられず、それを組版という……が、僕のような異常者をのぞいて、一般的に組版なんてのはめんどくさいことこの上ない行為である。それはなぜか。組版は本質的に文字を“認める”行為に寄与していない（ように思える）からだ。</p>
-			<p>もちろんこの直感にいますぐ反例をあげて異を唱えることもできてしまうが、今から僕が話したいこととはだいぶ脱線してしまうので避けようと思う。じっさい組版なんてのはほとんどすべての人にとってめんどくさい行為でしかないのだ。じゃなかったら文書作成がいまだにWordでなされていることもないだろう。</p>
+			<p>I built my own page.</p>
+			<p>自らのサイトを設計しました。</p>
 		</div>
     </main>
   )

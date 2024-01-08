@@ -1,3 +1,27 @@
 .bold{
   font-weight: 600;
 }
+
+.demo{
+  margin-top: var(--scale-3xl);
+  max-width: calc(60 * var(--scale-s));
+  margin-left: auto;
+
+  display: flex;
+  justify-content: right;
+	flex-wrap: wrap;
+}
+
+.image{
+  width: 100%;
+  height: auto;
+}
+
+.contents{
+  margin-top: var(--scale-m);
+  margin-left: 1.25dvw;
+}
+
+.contents p{
+  padding-bottom: var(--scale-m);
+}

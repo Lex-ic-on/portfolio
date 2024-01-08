@@ -17,7 +17,7 @@
 
   max-width: calc(60 * var(--scale-s));
 
-  bottom: var(--scale-m);
+  bottom: var(--scale-l);
 
   margin-left: 1.25dvw;
 }

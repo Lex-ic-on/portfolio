@@ -8,3 +8,8 @@
 
   max-width: calc(60 * var(--scale-s));
 }
+
+.contents p{
+	margin-bottom: var(--scale-m);
+	text-indent: 1rem;
+}
