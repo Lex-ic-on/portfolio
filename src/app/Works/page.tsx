@@ -13,15 +13,9 @@ export default function Home() {
       />
       <ul className={styles.portalLink}>
         <li>
-          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="private"/>
+          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="My own page" cl="private, 2024-01"/>
         </li>
-        <li>
-          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="private"/>
-		</li>
-		 <li>
-          <Thumb url="./Works/built-my-own-page" src="/thumbnail-default/thumbnail.png" title="default Thumbnail" cl="private"/>
-		</li>
-		</ul>
+		  </ul>
     </main>
   )
 }

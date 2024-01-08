@@ -8,6 +8,8 @@
 	display: flex;
 	justify-content: left;
 	flex-wrap: wrap;
+
+	opacity: 0;
 }
 
 .portalLink li{

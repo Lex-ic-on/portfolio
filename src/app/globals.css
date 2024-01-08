@@ -32,7 +32,7 @@
 }
 @media (prefers-color-scheme: dark){
 	:root {
-		--color-background: var(--munsell-n2);
+		--color-background: var(--munsell-n1);
 		--color-gray: var(--munsell-n6);
 		--color-contrast: var(--munsell-n9);
 	}
