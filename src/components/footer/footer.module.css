@@ -5,12 +5,10 @@
 .footerNav{
 	display: flex;
 	flex-direction: row;
-	align-items: flex-end;
 	justify-content: flex-end;
 
-	position: absolute;
-	bottom: var(--scale-xs);
-	right: 1.25dvw;
+	margin-top: calc(50dvh - 2 * var(--scale-l) - 2 * var(--scale-m));
+	margin-right: 1.25dvw;
 
 	gap: var(--scale-m);
 

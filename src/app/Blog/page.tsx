@@ -14,7 +14,7 @@ export default function Home() {
     	<ul className={styles.portalLink}>
         	<li>
 				  <Thumb
-					  url='/Blog/typesetting-with-reducionism'
+					  url='/Blog/typesetting-with-reductionism'
 					  date='2024-01-09'
 					  title='還元主義的組版'
 					  description='組版は文字を組むことであり、文字を書くときに文字を組むという行為からは逃れられず、それを組版という……が、僕のような異常者をのぞいて、一般的に組版なんてのはめんどくさいことこの上ない行為である。それはなぜか。組版は本質的に文字を“認める”行為に寄与していない（ように思える）からだ。'
