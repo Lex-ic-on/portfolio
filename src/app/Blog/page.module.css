@@ -1,0 +1,17 @@
+.bold{
+  font-weight: 600;
+}
+
+.portalLink {
+	margin-top: 60dvh;
+
+	padding-left: 1.25dvw;
+	padding-right: 1.25dvw;
+
+	max-width: calc(60 * var(--scale-s));
+
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+}
