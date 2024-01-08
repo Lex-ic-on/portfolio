@@ -9,7 +9,7 @@ export default function Home() {
     <main className={styles.main}>
     	<Hero
     	    dir="1exicon.com/Works/built-my-own-page"
-        	title="Lex website"
+			title="Lex website"
     	/>
 		<div className={styles.contents}>
 			<p>組版は文字を組むことであり、文字を書くときに文字を組むという行為からは逃れられず、それを組版という……が、僕のような異常者をのぞいて、一般的に組版なんてのはめんどくさいことこの上ない行為である。それはなぜか。組版は本質的に文字を“認める”行為に寄与していない（ように思える）からだ。</p>

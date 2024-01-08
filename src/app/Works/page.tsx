@@ -10,6 +10,7 @@ export default function Home() {
       <Hero
         dir="1exicon.com/Works"
         title="Works"
+        stats=""
       />
       <ul className={styles.portalLink}>
         <li>

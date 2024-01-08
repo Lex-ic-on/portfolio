@@ -9,7 +9,8 @@ export default function Home() {
     <main className={styles.main}>
       <Hero
         dir="1exicon.com/Blog"
-        title="Blog"
+		title="Blog"
+		stats=""
       />
     	<ul className={styles.portalLink}>
         	<li>
