@@ -8,9 +8,9 @@
 
 	gap: var(--scale-s);
 
-	padding-top: var(--padding-td);
-	padding-right: var(--padding-lr);
+	padding-top: 1dvh;
+	padding-right: 1.25dvw;
 
-	font-size: var(--scale-s);
-	line-height: var(--scale-m);
+	font-size: var(--scale-t-s);
+	line-height: var(--scale-t-m);
 }

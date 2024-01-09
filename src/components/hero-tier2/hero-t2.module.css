@@ -6,7 +6,7 @@
 
 	top: var(--scale-xs);
 
-	padding-left: var(--padding-lr);
+	padding-left: 1.25dvw;
 }
 
 .pageTitle{

@@ -5,11 +5,13 @@
   	margin-top: 34dvh;
   	margin-left: auto;
 	margin-right: auto;
+	padding-left: 2.5dvw;
+	padding-right: 2.5dvw;
 
-  max-width: calc(60 * var(--scale-s));
+  max-width: calc(60 * var(--scale-t-s) + 5dvw);
 }
 
 .contents p{
-	margin-bottom: var(--scale-m);
-	text-indent: 1rem;
+	margin-bottom: var(--scale-xs);
+	text-indent: var(--scale-t-s);
 }

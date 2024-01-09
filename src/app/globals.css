@@ -6,8 +6,11 @@
 	--munsell-n9: #e6e4dc;
 
 	/* type & line scale */
+	--scale-t-xs: 0.625rem;
 	--scale-xs: clamp(0.375rem, -0.125rem + 1.6vw, 0.625rem);
+	--scale-t-s: 1rem;
 	--scale-s: clamp(0.625rem, -0.125rem + 2.4vw, 1rem);
+	--scale-t-m: 1.625rem;
 	--scale-m: clamp(1rem, -0.25rem + 4vw, 1.625rem);
 	--scale-l: clamp(1.625rem, -0.375rem + 6.4vw, 2.625rem);
 	--scale-xl: clamp(2.625rem, -0.625rem + 10.4vw, 4.25rem);
@@ -16,10 +19,6 @@
 	--scale-3xl: clamp(6.875rem, -1.625rem + 27.2vw, 11.125rem);
 	--scale-t-4xl: fclamp(6.875rem, -15.375rem + 71.2vw, 18rem);
 	--scale-4xl: clamp(11.125rem, -2.625rem + 44vw, 18rem);
-
-	/* padding scale */
-	--padding-lr: 1.25dvw;
-	--padding-td: 1dvh;
 }
 
 /* light & dark theme colour set */
@@ -61,13 +60,21 @@ body {
 }
 
 /* typesetting */
-.type_xs, h5{
+.type_xs{
 	font-size: var(--scale-xs);
 	line-height: var(--scale-s);
 }
-.type_s, p, h4{
+h5{
+	font-size: var(--scale-t-xs);
+	line-height: var(--scale-t-s);
+}
+.type_s{
 	font-size: var(--scale-s);
 	line-height: var(--scale-m);
+}
+p, h4{
+	font-size: var(--scale-t-s);
+	line-height: var(--scale-t-m);
 }
 .type_m, h3{
 	font-size: var(--scale-m);
