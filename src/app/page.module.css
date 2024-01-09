@@ -11,6 +11,9 @@
 }
 
 .description{
+  font-size: var(--scale-s);
+  line-height: var(--scale-m);
+  
   display: flex;
   flex-direction: column;
   position: absolute;
