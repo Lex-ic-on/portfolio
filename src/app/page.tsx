@@ -12,10 +12,10 @@ export default function Home() {
       />
       <ul className={styles.portalLink}>
         <li>
-          <Link href='./Works'><h3 className={styles.bold}>See my works &gt;</h3></Link>
+          <Link href='./Works'><p className={styles.link}>See my works &gt;</p></Link>
         </li>
         <li>
-          <Link href='mailto:contact.4194304@gmail.com'><h3 className={styles.bold}>Contact me &gt;</h3></Link>
+          <Link href='mailto:contact.4194304@gmail.com'><p className={styles.link}>Contact me &gt;</p></Link>
         </li>
       </ul>
       <div className={styles.description}>

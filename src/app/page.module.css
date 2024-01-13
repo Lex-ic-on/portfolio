@@ -6,8 +6,9 @@
   margin-left: 50dvw;
 }
 
-.bold{
-  font-weight: 600;
+.type_m{
+	font-size: var(--scale-m);
+	line-height: var(--scale-l);
 }
 
 .description{  
@@ -26,4 +27,9 @@
 .description p{
   font-size: var(--scale-s);
   line-height: var(--scale-m);
+}
+
+.link{
+  composes: type_m;
+  font-weight: 600;
 }
