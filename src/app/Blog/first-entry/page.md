@@ -1,10 +1,3 @@
-import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import Hero from '../../../components/hero-tier2'
-import styles from './page.module.css'
-
-const mdString = `
 やろうやろうと言っていて結局後回しになってしまっていた自分のサイトをようやく作り上げた。といってもローンチまでの第一宇宙速度を得るのにいたったのは別にケロシンでも液体酸素のおかげでも、スペースXの創業者の気まぐれに危機感を覚えたからでもなく、たんに僕が成人の日のことを完全に忘れてしまっていたことによる。
 
 もともと今年の正月は特になにかする予定もなく、無限に積んでいた所属組織の資料をドキュメンテーションしたり、無限に積んでいた仕事を捌いたり、ノリで同窓に誘われた、友人宅への突撃を敢行したりするつもりであった。
@@ -24,18 +17,3 @@ const mdString = `
 そこそこまえにプレーンのHTML+CSSでサイトを作ったこともあったのだが、その時の僕は遥かに手探りであったし（今もそうではあるが……）、なにより自分自身のサイトではないので、まったく得ている感情が別物である。
 
 ともあれインターネット根城がようやくできたので、今度からはここにもものを認めていこうかなと考えている。
-`
-
-export default function Home() {
-	return (
-		<main className={styles.main}>
-			<Hero
-    	    dir="1exicon.com/Blog/first-entry"
-        	title="サイトを作った"
-    		/>
-			<div className={styles.contents}>
-				<ReactMarkdown remarkPlugins={[remarkGfm]}>{mdString}</ReactMarkdown>
-			</div>
-		</main>
-	)
-}
