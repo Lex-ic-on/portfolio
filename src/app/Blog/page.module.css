@@ -15,3 +15,7 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.portalLink li{
+	margin-bottom: var(--scale-l);
+}
