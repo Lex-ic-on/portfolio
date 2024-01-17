@@ -3,7 +3,7 @@
 }
 
 .portalLink {
-	margin-top: 60dvh;
+	margin-top: calc(60dvh - var(--scale-t-3xl) - var(--scale-t-s) - var(--scale-t-m));
 	
 	display: flex;
 	justify-content: left;

@@ -2,7 +2,7 @@
   display: flex;
 	flex-direction: column;
 
-  margin-top: calc(50dvh - var(--scale-m));
+  margin-top: calc(50dvh - var(--scale-t-3xl) - var(--scale-t-s) - var(--scale-t-m));
   margin-left: 50dvw;
 }
 
