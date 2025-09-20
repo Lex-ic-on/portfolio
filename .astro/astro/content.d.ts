@@ -155,13 +155,6 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"test-wikilinks.md": {
-	id: "test-wikilinks.md";
-  slug: "test-wikilinks";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 };
 "works": {
 "built-my-own-page.md": {
