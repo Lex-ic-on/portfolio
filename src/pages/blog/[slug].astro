@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import HeroTier2 from '../../components/HeroTier2.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} - Lex portfolio website`} description={entry.data.description}>
+  <Header />
+  <main class="main">
+    <HeroTier2
+      dir={`1exicon.com/Blog/${entry.slug}`}
+      title={entry.data.title}
+    />
+    <article class="blog-post">
+      <div class="blog-meta">
+        <time datetime={entry.data.date.toISOString()}>
+          {entry.data.date.toLocaleDateString('ja-JP')}
+        </time>
+      </div>
+      <div class="blog-content">
+        <Content />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 100dvh;
+  }
+
+  .blog-post {
+    margin-left: 1.25dvw;
+    margin-top: var(--scale-m);
+    max-width: calc(100dvw - 10 * var(--scale-t-s) - 3.75dvw);
+  }
+
+  .blog-meta {
+    margin-bottom: var(--scale-m);
+    font-size: var(--scale-s);
+    color: var(--color-gray);
+  }
+
+  .blog-content {
+    font-size: var(--scale-t-s);
+    line-height: var(--scale-t-m);
+  }
+
+  .blog-content :global(p) {
+    margin-bottom: var(--scale-t-m);
+  }
+
+  .blog-content :global(h1) {
+    font-size: var(--scale-xl);
+    line-height: var(--scale-2xl);
+    margin-bottom: var(--scale-m);
+    margin-top: var(--scale-l);
+  }
+
+  .blog-content :global(h2) {
+    font-size: var(--scale-l);
+    line-height: var(--scale-xl);
+    margin-bottom: var(--scale-s);
+    margin-top: var(--scale-m);
+  }
+
+  .blog-content :global(h3) {
+    font-size: var(--scale-m);
+    line-height: var(--scale-l);
+    margin-bottom: var(--scale-s);
+    margin-top: var(--scale-s);
+  }
+
+  .blog-content :global(ul), .blog-content :global(ol) {
+    margin-left: var(--scale-s);
+    margin-bottom: var(--scale-t-m);
+  }
+
+  .blog-content :global(li) {
+    margin-bottom: var(--scale-xs);
+  }
+
+  .blog-content :global(blockquote) {
+    border-left: 2px solid var(--color-gray);
+    padding-left: var(--scale-s);
+    margin: var(--scale-m) 0;
+    font-style: italic;
+  }
+
+  .blog-content :global(code) {
+    background-color: var(--munsell-n2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+  }
+
+  .blog-content :global(pre) {
+    background-color: var(--munsell-n2);
+    padding: var(--scale-s);
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: var(--scale-m) 0;
+  }
+
+  .blog-content :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+</style>
