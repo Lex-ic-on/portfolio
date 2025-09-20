@@ -19,6 +19,11 @@
 	--scale-3xl: clamp(6.875rem, -1.625rem + 27.2vw, 11.125rem);
 	--scale-t-4xl: clamp(6.875rem, -15.375rem + 71.2vw, 18rem);
 	--scale-4xl: clamp(11.125rem, -2.625rem + 44vw, 18rem);
+
+	/* global layout metrics */
+	--header-padding-block: max(var(--scale-xs), 1dvh);
+	--header-padding-inline: 1.25dvw;
+	--header-height: calc(var(--scale-t-m) + (var(--header-padding-block) * 2));
 }
 
 /* light & dark theme colour set */

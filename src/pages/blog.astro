@@ -41,7 +41,8 @@ const sortedPosts = allBlogPosts
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    min-height: 100dvh;
+    min-height: calc(100dvh - var(--header-height));
+    padding-top: var(--header-height);
   }
 
   .blog-list {

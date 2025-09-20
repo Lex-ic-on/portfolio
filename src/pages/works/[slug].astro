@@ -60,7 +60,8 @@ function resolveImagePath(src: string, slug: string) {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    min-height: 100dvh;
+    min-height: calc(100dvh - var(--header-height));
+    padding-top: var(--header-height);
   }
 
   .work-post {

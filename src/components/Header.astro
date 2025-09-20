@@ -2,6 +2,17 @@
 import Navigation from './Navigation.astro';
 ---
 
-<header>
+<header class="site-header">
   <Navigation />
 </header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 10;
+  }
+</style>
