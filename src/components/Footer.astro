@@ -1,0 +1,30 @@
+---
+// Footer component
+---
+
+<footer>
+  <ul class="footer-nav">
+    <li>
+      <a href="https://twitter.com/_Lex_icon" target="_blank" rel="noopener noreferrer">Twitter &gt;</a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/__lex__icon" target="_blank" rel="noopener noreferrer">Instagram &gt;</a>
+    </li>
+  </ul>
+</footer>
+
+<style>
+  .footer-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    margin-top: calc(50dvh - 3 * var(--scale-l));
+    margin-right: 1.25dvw;
+
+    gap: var(--scale-m);
+
+    font-size: var(--scale-s);
+    line-height: var(--scale-m);
+  }
+</style>

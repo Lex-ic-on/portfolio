@@ -1,0 +1,29 @@
+---
+export interface Props {
+  url: string;
+  src: string;
+  title: string;
+  cl: string;
+}
+
+const { url, src, title, cl } = Astro.props;
+---
+
+<a href={url} class="thumb">
+  <img src={src} alt="" />
+  <h4 class="page-title">{title} &gt;&gt;&gt;</h4>
+  <h5 class="client-name">{cl}</h5>
+</a>
+
+<style>
+  .page-title {
+    font-weight: 600;
+    line-height: 100%;
+  }
+
+  .thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroTier2 from '../components/HeroTier2.astro';
+import ThumbWork from '../components/ThumbWork.astro';
+---
+
+<Layout title="Works - Lex portfolio website">
+  <Header />
+  <main class="main">
+    <HeroTier2
+      dir="1exicon.com/Works"
+      title="Works"
+    />
+    <ul class="works-list">
+      <li>
+        <ThumbWork
+          url="/works/built-my-own-page"
+          src="/thumbnail-default/thumbnail.png"
+          title="My own page"
+          cl="private, 2024-01"
+        />
+      </li>
+    </ul>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 100dvh;
+  }
+
+  .works-list {
+    margin-left: 1.25dvw;
+    margin-top: var(--scale-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--scale-m);
+  }
+</style>

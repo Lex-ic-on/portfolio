@@ -1,0 +1,24 @@
+---
+export interface Props {
+  url: string;
+  date: string;
+  title: string;
+  description: string;
+}
+
+const { url, date, title, description } = Astro.props;
+---
+
+<a href={url} class="thumb">
+  <h5 class="date">{date}</h5>
+  <h3 class="page-title">{title}</h3>
+  <p class="description">{description}</p>
+  <h5>read more &gt;&gt;&gt;</h5>
+</a>
+
+<style>
+  .description {
+    font-size: var(--scale-s);
+    line-height: var(--scale-m);
+  }
+</style>

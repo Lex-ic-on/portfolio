@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroTier1 from '../components/HeroTier1.astro';
+---
+
+<Layout title="Lex portfolio website">
+  <Header />
+  <main class="main">
+    <HeroTier1
+      dir="1exicon.com"
+      title="Lex"
+      stats="Designer, Developer"
+    />
+    <ul class="portal-link">
+      <li>
+        <a href="/works"><p class="link">See my works &gt;</p></a>
+      </li>
+      <li>
+        <a href="mailto:contact.4194304@gmail.com"><p class="link">Contact me &gt;</p></a>
+      </li>
+    </ul>
+    <div class="description">
+      <p>Hello, I'm Lex.</p>
+      <p>I mainly work DTP, typography (incl. on-screen design,) UI, and web design. I'm glad to see you, and if you would like, please follow my Twitter.</p>
+      <p>If you want to create something new or good, want to prove some problems with design, I'm ready to cooperate with me and please send me a message.</p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    min-height: 100dvh;
+  }
+
+  .portal-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 1.25dvw;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    gap: var(--scale-xs);
+  }
+
+  .description {
+    margin-left: 1.25dvw;
+    margin-bottom: var(--scale-m);
+
+    font-size: var(--scale-s);
+    line-height: var(--scale-m);
+
+    max-width: calc(100dvw - 10 * var(--scale-t-s) - 3.75dvw);
+  }
+
+  .link {
+    font-weight: 600;
+  }
+</style>

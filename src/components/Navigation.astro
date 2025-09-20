@@ -1,0 +1,42 @@
+---
+// Navigation component
+---
+
+<nav>
+  <ul class="navigation">
+    <li>
+      <a href="/">
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="/works">
+        Works
+      </a>
+    </li>
+    <li>
+      <a href="/blog">
+        Blog
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .navigation {
+    font-weight: 600;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    gap: var(--scale-s);
+
+    padding-top: 1dvh;
+    padding-right: 1.25dvw;
+
+    font-size: var(--scale-t-s);
+    line-height: var(--scale-t-m);
+  }
+</style>
