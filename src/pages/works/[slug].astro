@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import HeroTier2 from '../../components/HeroTier2.astro';
+
+export async function getStaticPaths() {
+  const worksEntries = await getCollection('works');
+  return worksEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Custom image resolver for works
+function resolveImagePath(src: string, slug: string) {
+  if (src.startsWith('/') || src.startsWith('http')) {
+    return src; // Absolute path or URL
+  }
+  return `/images/works/${slug}/${src}`;
+}
+---
+
+<Layout title={`${entry.data.title} - Lex portfolio website`} description={entry.data.description}>
+  <Header />
+  <main class="main">
+    <HeroTier2
+      dir={`1exicon.com/Works/${entry.slug}`}
+      title={entry.data.title}
+    />
+    <article class="work-post">
+      <div class="work-meta">
+        <p class="client">{entry.data.client}</p>
+        <time datetime={entry.data.date.toISOString()}>
+          {entry.data.date.toLocaleDateString('ja-JP')}
+        </time>
+        {entry.data.tags.length > 0 && (
+          <div class="tags">
+            {entry.data.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div class="work-content" data-slug={entry.slug}>
+        <Content />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 100dvh;
+  }
+
+  .work-post {
+    margin-left: 1.25dvw;
+    margin-top: var(--scale-m);
+    max-width: calc(100dvw - 10 * var(--scale-t-s) - 3.75dvw);
+  }
+
+  .work-meta {
+    margin-bottom: var(--scale-m);
+    font-size: var(--scale-s);
+    color: var(--color-gray);
+    display: flex;
+    flex-direction: column;
+    gap: var(--scale-xs);
+  }
+
+  .client {
+    font-weight: 600;
+    color: var(--color-contrast);
+  }
+
+  .tags {
+    display: flex;
+    gap: var(--scale-xs);
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 0.25rem 0.5rem;
+    background-color: var(--munsell-n6);
+    color: var(--munsell-n9);
+    border-radius: 0.25rem;
+    font-size: var(--scale-t-xs);
+  }
+
+  .work-content {
+    font-size: var(--scale-t-s);
+    line-height: var(--scale-t-m);
+  }
+
+  .work-content :global(p) {
+    margin-bottom: var(--scale-t-m);
+  }
+
+  .work-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    margin: var(--scale-m) 0;
+    border-radius: 0.5rem;
+  }
+
+  .work-content :global(h1) {
+    font-size: var(--scale-xl);
+    line-height: var(--scale-2xl);
+    margin-bottom: var(--scale-m);
+    margin-top: var(--scale-l);
+  }
+
+  .work-content :global(h2) {
+    font-size: var(--scale-l);
+    line-height: var(--scale-xl);
+    margin-bottom: var(--scale-s);
+    margin-top: var(--scale-m);
+  }
+
+  .work-content :global(h3) {
+    font-size: var(--scale-m);
+    line-height: var(--scale-l);
+    margin-bottom: var(--scale-s);
+    margin-top: var(--scale-s);
+  }
+
+  .work-content :global(ul), .work-content :global(ol) {
+    margin-left: var(--scale-s);
+    margin-bottom: var(--scale-t-m);
+  }
+
+  .work-content :global(li) {
+    margin-bottom: var(--scale-xs);
+  }
+</style>
+
+<script>
+  // Resolve relative image paths
+  document.addEventListener('DOMContentLoaded', () => {
+    const workContent = document.querySelector('[data-slug]');
+    if (!workContent) return;
+
+    const slug = workContent.getAttribute('data-slug');
+    const images = workContent.querySelectorAll('img');
+
+    images.forEach(img => {
+      const src = img.getAttribute('src');
+      if (src && !src.startsWith('/') && !src.startsWith('http')) {
+        img.setAttribute('src', `/images/works/${slug}/${src}`);
+      }
+    });
+  });
+</script>

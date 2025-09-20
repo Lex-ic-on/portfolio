@@ -1,9 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroTier2 from '../components/HeroTier2.astro';
 import ThumbWork from '../components/ThumbWork.astro';
+
+const allWorks = await getCollection('works');
+const sortedWorks = allWorks
+  .filter((work) => !work.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout title="Works - Lex portfolio website">
@@ -14,14 +20,16 @@ import ThumbWork from '../components/ThumbWork.astro';
       title="Works"
     />
     <ul class="works-list">
-      <li>
-        <ThumbWork
-          url="/works/built-my-own-page"
-          src="/thumbnail-default/thumbnail.png"
-          title="My own page"
-          cl="private, 2024-01"
-        />
-      </li>
+      {sortedWorks.map((work) => (
+        <li>
+          <ThumbWork
+            url={`/works/${work.slug}`}
+            src={work.data.thumbnail || '/thumbnails/default.png'}
+            title={work.data.title}
+            cl={`${work.data.client}, ${work.data.date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit' })}`}
+          />
+        </li>
+      ))}
     </ul>
   </main>
   <Footer />
