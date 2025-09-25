@@ -1,4 +1,5 @@
 ---
+slug: "modes-and-chars"
 title: "もじ イメージ Graphic展"
 description: ""
 date: 2024-01-14
