@@ -146,21 +146,21 @@ declare module 'astro:content' {
   slug: "tkx-2025";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "first-entry.md": {
 	id: "first-entry.md";
   slug: "first-entry";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 "modes-and-chars.md": {
 	id: "modes-and-chars.md";
   slug: "modes-and-chars";
   body: string;
   collection: "blog";
-  data: any
+  data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
 };
 "works": {
@@ -169,7 +169,7 @@ declare module 'astro:content' {
   slug: "built-my-own-page";
   body: string;
   collection: "works";
-  data: any
+  data: InferEntrySchema<"works">
 } & { render(): Render[".md"] };
 };
 
@@ -181,5 +181,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = never;
+	export type ContentConfig = typeof import("../../src/content/config.js");
 }

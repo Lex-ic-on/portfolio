@@ -1,6 +1,9 @@
+import path from 'node:path';
 import { visit } from 'unist-util-visit';
 import type { Node } from 'unist';
 import type { Text } from 'mdast';
+
+import { resolveObsidianImageEmbed } from './obsidian-image-helpers';
 
 interface WikiLinkMatch {
   type: 'same' | 'cross' | 'image';
@@ -9,6 +12,8 @@ interface WikiLinkMatch {
   originalText: string;
   startIndex: number;
   endIndex: number;
+  imageVariant?: 'directive' | 'embed';
+  altText?: string;
 }
 
 // Slugify function to convert titles to slugs
@@ -20,23 +25,38 @@ function slugify(text: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-function parseWikiLink(text: string): WikiLinkMatch | null {
-  const wikiLinkRegex = /\[\[([^\]]+)\]\]/g;
-  const match = wikiLinkRegex.exec(text);
+function parseWikiLink(match: RegExpExecArray): WikiLinkMatch | null {
+  const raw = match[0];
+  const content = match[1].trim();
+  const [startIndex, endIndex] = [match.index, match.index + raw.length];
 
-  if (!match) return null;
+  if (!content) {
+    return null;
+  }
 
-  const content = match[1];
-  const [startIndex, endIndex] = [match.index, match.index + match[0].length];
+  // Handle Obsidian-style image embeds `![[image.png]]`
+  if (raw.startsWith('!')) {
+    const [, altRaw] = content.split('|');
+    return {
+      type: 'image',
+      title: content,
+      originalText: raw,
+      startIndex,
+      endIndex,
+      imageVariant: 'embed',
+      altText: altRaw?.trim() || undefined,
+    };
+  }
 
-  // Check for image links
+  // Check for image directive links like [[image:filename.png]]
   if (content.startsWith('image:')) {
     return {
       type: 'image',
       title: content.slice(6), // Remove 'image:' prefix
-      originalText: match[0],
+      originalText: raw,
       startIndex,
       endIndex,
+      imageVariant: 'directive',
     };
   }
 
@@ -47,7 +67,7 @@ function parseWikiLink(text: string): WikiLinkMatch | null {
       type: 'cross',
       collection: crossLinkMatch[1],
       title: crossLinkMatch[2],
-      originalText: match[0],
+      originalText: raw,
       startIndex,
       endIndex,
     };
@@ -57,15 +77,46 @@ function parseWikiLink(text: string): WikiLinkMatch | null {
   return {
     type: 'same',
     title: content,
-    originalText: match[0],
+    originalText: raw,
     startIndex,
     endIndex,
   };
 }
 
-function createLinkNode(match: WikiLinkMatch, currentCollection: string = 'blog') {
+function createLinkNode(
+  match: WikiLinkMatch,
+  currentCollection: string = 'blog',
+  slug?: string,
+) {
   if (match.type === 'image') {
-    // Handle image links
+    if (match.imageVariant === 'embed') {
+      if (!slug) {
+        return {
+          type: 'text',
+          value: match.originalText,
+        };
+      }
+
+      const resolved = resolveObsidianImageEmbed(match.title, {
+        slug,
+        collection: currentCollection,
+      });
+
+      if (!resolved) {
+        return {
+          type: 'text',
+          value: match.originalText,
+        };
+      }
+
+      return {
+        type: 'image',
+        url: resolved.url,
+        alt: match.altText || resolved.alt,
+      };
+    }
+
+    // Handle image directive links
     const imagePath = `/images/${currentCollection}/${match.title}`;
     return {
       type: 'image',
@@ -76,8 +127,8 @@ function createLinkNode(match: WikiLinkMatch, currentCollection: string = 'blog'
 
   // Handle regular links
   const collection = match.collection || currentCollection;
-  const slug = slugify(match.title);
-  const url = `/${collection}/${slug}`;
+  const linkSlug = slugify(match.title);
+  const url = `/${collection}/${linkSlug}`;
 
   return {
     type: 'link',
@@ -92,8 +143,25 @@ function createLinkNode(match: WikiLinkMatch, currentCollection: string = 'blog'
   };
 }
 
+function extractSlugFromFile(file: { data?: unknown; history?: string[]; path?: string }): string | undefined {
+  const astroData = (file as { data?: { astro?: { frontmatter?: { slug?: unknown } } } }).data?.astro;
+  const slugValue = astroData?.frontmatter?.slug;
+
+  if (typeof slugValue === 'string' && slugValue.trim().length > 0) {
+    return slugValue.trim();
+  }
+
+  const filePath = file.history?.[0] || file.path;
+  if (typeof filePath === 'string' && filePath.length > 0) {
+    return path.basename(filePath, path.extname(filePath));
+  }
+
+  return undefined;
+}
+
 export function remarkWikiLinks(options: { collection?: string } = {}) {
-  return function transformer(tree: Node) {
+  return function transformer(tree: Node, file: unknown) {
+    const slug = extractSlugFromFile((file || {}) as { data?: unknown; history?: string[]; path?: string });
     visit(tree, 'text', (node: Text, index, parent) => {
       if (!parent || typeof index !== 'number') return;
 
@@ -102,12 +170,10 @@ export function remarkWikiLinks(options: { collection?: string } = {}) {
 
       // Find all wiki links in the text
       let match;
-      const regex = /\[\[([^\]]+)\]\]/g;
+      const regex = /!?\[\[([^\]]+)\]\]/g;
       while ((match = regex.exec(text)) !== null) {
-        const parsed = parseWikiLink(match[0]);
+        const parsed = parseWikiLink(match);
         if (parsed) {
-          parsed.startIndex = match.index;
-          parsed.endIndex = match.index + match[0].length;
           wikiLinks.push(parsed);
         }
       }
@@ -128,7 +194,7 @@ export function remarkWikiLinks(options: { collection?: string } = {}) {
         }
 
         // Add the processed link
-        newNodes.push(createLinkNode(wikiLink, options.collection));
+        newNodes.push(createLinkNode(wikiLink, options.collection, slug));
 
         lastIndex = wikiLink.endIndex;
       }
