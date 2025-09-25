@@ -60,11 +60,15 @@ const { Content } = await entry.render();
     margin-bottom: var(--scale-m);
     font-size: var(--scale-s);
     color: var(--color-gray);
+    margin-left: var(--scale-m);
+    margin-right: var(--scale-m);
   }
 
   .blog-content {
     font-size: var(--scale-t-s);
     line-height: var(--scale-t-m);
+    margin-left: var(--scale-m);
+    margin-right: var(--scale-m);
   }
 
   .blog-content :global(p) {
@@ -130,9 +134,9 @@ const { Content } = await entry.render();
   }
 
   .blog-content :global(img) {
-    max-width: 34rem;
+    max-width: 40rem;
     height: auto;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 </style>
