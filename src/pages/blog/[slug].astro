@@ -4,11 +4,12 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import HeroTier2 from '../../components/HeroTier2.astro';
+import { getBlogSlug } from '../../lib/blogSlug';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: getBlogSlug(entry) },
     props: { entry },
   }));
 }
@@ -21,7 +22,7 @@ const { Content } = await entry.render();
   <Header />
   <main class="main">
     <HeroTier2
-      dir={`1ex.me/Blog/${entry.slug}`}
+      dir={`1ex.me/Blog/${getBlogSlug(entry)}`}
       title={entry.data.title}
     />
     <article class="blog-post">

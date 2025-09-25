@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import HeroTier2 from '../components/HeroTier2.astro';
 import ThumbBlog from '../components/ThumbBlog.astro';
 import { getDescription } from '../components/ExcerptHelper';
+import { getBlogSlug } from '../lib/blogSlug';
 
 const allBlogPosts = await getCollection('blog');
 const sortedPosts = allBlogPosts
@@ -24,7 +25,7 @@ const sortedPosts = allBlogPosts
       {sortedPosts.map((post) => (
         <li>
           <ThumbBlog
-            url={`/blog/${post.slug}`}
+            url={`/blog/${getBlogSlug(post)}`}
             date={post.data.date.toLocaleDateString('ja-JP')}
             title={post.data.title}
             description={getDescription({
