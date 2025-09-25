@@ -18,9 +18,25 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const slug = getBlogSlug(entry);
-const ogImage = await pickOgImage([
-  `/thumbnails/blog/${slug}/thumbnail.webp`,
-]);
+const baseCandidates = new Set<string>();
+baseCandidates.add(`/thumbnails/blog/${slug}/thumbnail.webp`);
+
+const entrySlug = entry.slug;
+if (entrySlug) {
+  baseCandidates.add(`/thumbnails/blog/${entrySlug}/thumbnail.webp`);
+}
+
+const sanitizedSlug = slug.replace(/[^a-z0-9]/gi, '').toLowerCase();
+if (sanitizedSlug) {
+  baseCandidates.add(`/thumbnails/blog/${sanitizedSlug}/thumbnail.webp`);
+}
+
+const fileStem = entry.id?.split('/')?.pop()?.replace(/\.[^.]+$/, '');
+if (fileStem) {
+  baseCandidates.add(`/thumbnails/blog/${fileStem}/thumbnail.webp`);
+}
+
+const ogImage = await pickOgImage([...baseCandidates]);
 ---
 
 <Layout

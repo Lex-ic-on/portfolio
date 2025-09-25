@@ -2,16 +2,21 @@ import { access } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// OGPに使うデフォルト画像のパス
 export const DEFAULT_OG_IMAGE_PATH = '/thumbnails/default.png';
 
+// publicディレクトリの絶対パスを算出
 const PUBLIC_DIR_PATH = fileURLToPath(new URL('../../public/', import.meta.url));
 
+// 絶対URLを判定するための正規表現
 const ABSOLUTE_URL_PATTERN = /^https?:\/\//i;
 
+// 文字列が絶対URLかどうかを判定
 function isAbsoluteUrl(candidate: string): boolean {
   return ABSOLUTE_URL_PATTERN.test(candidate.trim());
 }
 
+// public配下で利用できる形式にパスを整形
 function normalizePublicPath(candidate: string): string {
   const trimmed = candidate.trim();
   if (!trimmed) {
@@ -20,11 +25,13 @@ function normalizePublicPath(candidate: string): string {
   return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
 }
 
+// Webパスからローカルファイルシステムのパスに変換
 function toPublicFilesystemPath(webPath: string): string {
   const relative = webPath.replace(/^\/+/, '');
   return path.join(PUBLIC_DIR_PATH, relative);
 }
 
+// 指定したパスにファイルが存在するか非同期で確認
 async function fileExists(fsPath: string): Promise<boolean> {
   try {
     await access(fsPath);
@@ -34,6 +41,7 @@ async function fileExists(fsPath: string): Promise<boolean> {
   }
 }
 
+// 候補リストから最初に存在するOG画像を決定
 export async function pickOgImage(candidatePaths: Array<string | undefined | null>, fallbackPath: string = DEFAULT_OG_IMAGE_PATH): Promise<string> {
   for (const candidate of candidatePaths) {
     if (!candidate) {
@@ -64,6 +72,7 @@ export async function pickOgImage(candidatePaths: Array<string | undefined | nul
   return normalizePublicPath(fallbackPath);
 }
 
+// サイト情報とページURLから最終的なOG画像のURLを組み立て
 export function buildOgImageUrl({
   imagePath,
   site,
@@ -107,6 +116,7 @@ const MIME_TYPES: Record<string, string> = {
   '.webp': 'image/webp',
 };
 
+// 拡張子から適切なOG画像のMIMEタイプを推測
 export function guessOgImageMimeType(imagePath: string): string {
   if (!imagePath) {
     return 'image/png';
