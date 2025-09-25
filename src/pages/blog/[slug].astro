@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import HeroTier2 from '../../components/HeroTier2.astro';
 import { getBlogSlug } from '../../lib/blogSlug';
+import { pickOgImage } from '../../lib/ogImage';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -16,13 +17,21 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const slug = getBlogSlug(entry);
+const ogImage = await pickOgImage([
+  `/thumbnails/blog/${slug}/thumbnail.webp`,
+]);
 ---
 
-<Layout title={`${entry.data.title} - Lex portfolio website`} description={entry.data.description}>
+<Layout
+  title={`${entry.data.title} - Lex portfolio website`}
+  description={entry.data.description}
+  ogImage={ogImage}
+>
   <Header />
   <main class="main">
     <HeroTier2
-      dir={`1ex.me/Blog/${getBlogSlug(entry)}`}
+      dir={`1ex.me/Blog/${slug}`}
       title={entry.data.title}
     />
     <article class="blog-post">
@@ -75,6 +84,9 @@ const { Content } = await entry.render();
 
   .blog-content :global(p) {
     margin-bottom: var(--scale-t-m);
+  }
+  .blog-content :global(a) {
+    text-decoration: underline;
   }
 
   .blog-content :global(h1) {
