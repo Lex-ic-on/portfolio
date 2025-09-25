@@ -4,7 +4,7 @@ import { remarkWikiLinks } from './src/lib/remark-wikilinks';
 
 export default defineConfig({
   integrations: [react()],
-  site: 'https://1exicon.com',
+  site: 'https://1ex.me',
   output: 'static',
   markdown: {
     remarkPlugins: [
