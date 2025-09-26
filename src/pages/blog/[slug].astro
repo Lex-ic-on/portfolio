@@ -4,31 +4,28 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import HeroTier2 from '../../components/HeroTier2.astro';
-import { getBlogSlug } from '../../lib/blogSlug';
 import { pickOgImage } from '../../lib/ogImage';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: getBlogSlug(entry) },
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const slug = getBlogSlug(entry);
+const slug = entry.slug;
 const baseCandidates = new Set<string>();
-baseCandidates.add(`/thumbnails/blog/${slug}/thumbnail.webp`);
 
-const entrySlug = entry.slug;
-if (entrySlug) {
-  baseCandidates.add(`/thumbnails/blog/${entrySlug}/thumbnail.webp`);
-}
+if (slug) {
+  baseCandidates.add(`/thumbnails/blog/${slug}/thumbnail.webp`);
 
-const sanitizedSlug = slug.replace(/[^a-z0-9]/gi, '').toLowerCase();
-if (sanitizedSlug) {
-  baseCandidates.add(`/thumbnails/blog/${sanitizedSlug}/thumbnail.webp`);
+  const sanitizedSlug = slug.replace(/[^a-z0-9]/gi, '').toLowerCase();
+  if (sanitizedSlug) {
+    baseCandidates.add(`/thumbnails/blog/${sanitizedSlug}/thumbnail.webp`);
+  }
 }
 
 const fileStem = entry.id?.split('/')?.pop()?.replace(/\.[^.]+$/, '');
