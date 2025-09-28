@@ -165,9 +165,7 @@ const ogImage = await pickOgImage([...baseCandidates]);
   }
 
   .blog-content :global(img) {
-    max-width: 40rem;
+    max-width: min(48rem, 92dvw);
     height: auto;
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 </style>
