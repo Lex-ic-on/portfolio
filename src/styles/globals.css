@@ -1,9 +1,13 @@
 :root {
 	/* colour */
-	--munsell-n1: #08090b;
-	--munsell-n2: #2c2c2e;
-	--munsell-n6: #8f8f8d;
-	--munsell-n9: #e6e4dc;
+	--cr: #171718;
+	--n9: #393b3b;
+	--cc: #67635b;
+	--u9: #aca693;
+	--l9: #d8d2c3;
+	--cp: #e1dbd1;
+
+	--p3: #bc251e;
 
 	/* type & line scale */
 	--scale-t-xs: 0.625rem;
@@ -29,16 +33,16 @@
 /* light & dark theme colour set */
 @media (prefers-color-scheme: light){
 	:root{
-		--color-background: var(--munsell-n9);
-		--color-gray: var(--munsell-n6);
-		--color-contrast: var(--munsell-n1);
+		--color-background: var(--l9);
+		--color-gray: var(--u9);
+		--color-contrast: var(--cr);
 	}
 }
 @media (prefers-color-scheme: dark){
 	:root {
-		--color-background: var(--munsell-n2);
-		--color-gray: var(--munsell-n6);
-		--color-contrast: var(--munsell-n9);
+		--color-background: var(--n9);
+		--color-gray: var(--p3);
+		--color-contrast: var(--cp);
 	}
 }
 
