@@ -72,12 +72,15 @@ const ogImage = await pickOgImage([...baseCandidates]);
   }
 
   .blog-post {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 4dvw;
+    margin-right: 4dvw;
     margin-top: var(--scale-m);
     padding-top: var(--scale-4xl);
-    max-width: calc(60 * var(--scale-t-s) + 5dvw);
+    max-width: 52rem;
     margin-bottom: var(--scale-m);
+    display: flex;
+    flex-direction: column;
+    align-self: center;
   }
 
   .blog-meta {
@@ -98,6 +101,7 @@ const ogImage = await pickOgImage([...baseCandidates]);
   .blog-content :global(p) {
     margin-bottom: var(--scale-t-m);
   }
+
   .blog-content :global(a) {
     text-decoration: underline;
   }
@@ -161,9 +165,7 @@ const ogImage = await pickOgImage([...baseCandidates]);
   }
 
   .blog-content :global(img) {
-    max-width: 40rem;
+    max-width: min(48rem, 92dvw);
     height: auto;
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 </style>
