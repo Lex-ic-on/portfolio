@@ -3,7 +3,7 @@
 	--munsell-n1: #08090b;
 	--munsell-n2: #2c2c2e;
 	--munsell-n6: #8f8f8d;
-	--munsell-n9: #e6e4dc;
+	--beige-l9: #d8d2c3;
 
 	/* type & line scale */
 	--scale-t-xs: 0.625rem;
@@ -29,7 +29,7 @@
 /* light & dark theme colour set */
 @media (prefers-color-scheme: light){
 	:root{
-		--color-background: var(--munsell-n9);
+		--color-background: var(--beige-l9);
 		--color-gray: var(--munsell-n6);
 		--color-contrast: var(--munsell-n1);
 	}
@@ -38,7 +38,7 @@
 	:root {
 		--color-background: var(--munsell-n2);
 		--color-gray: var(--munsell-n6);
-		--color-contrast: var(--munsell-n9);
+		--color-contrast: var(--beige-l9);
 	}
 }
 
