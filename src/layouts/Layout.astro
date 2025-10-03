@@ -1,5 +1,6 @@
 ---
 import { buildOgImageUrl, DEFAULT_OG_IMAGE_PATH, guessOgImageMimeType } from '../lib/ogImage';
+import Analytics from '@vercel/analytics/astro'
 
 export interface Props {
   title?: string;
@@ -44,6 +45,7 @@ const ogImageType = guessOgImageMimeType(ogImage);
   </head>
   <body style="font-family: 'Space Grotesk', sans-serif;">
     <slot />
+    <Analytics />
   </body>
 </html>
 
