@@ -1,6 +1,7 @@
 ---
 import { buildOgImageUrl, DEFAULT_OG_IMAGE_PATH, guessOgImageMimeType } from '../lib/ogImage';
 import Analytics from '@vercel/analytics/astro'
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 
 export interface Props {
   title?: string;
@@ -45,7 +46,8 @@ const ogImageType = guessOgImageMimeType(ogImage);
   </head>
   <body style="font-family: 'Space Grotesk', sans-serif;">
     <slot />
-    <Analytics />
+    <Analytics client:load/>
+    <SpeedInsights client:load/>
   </body>
 </html>
 
