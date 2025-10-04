@@ -6,6 +6,7 @@ export default defineConfig({
   integrations: [react()],
   site: 'https://1ex.me',
   output: 'static',
+  compressHTML: true,
   markdown: {
     remarkPlugins: [
       [remarkWikiLinks, { collection: 'blog' }] // Default collection
