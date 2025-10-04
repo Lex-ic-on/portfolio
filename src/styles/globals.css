@@ -1,13 +1,20 @@
 :root {
 	/* colour */
+	
+	/* gmk */
 	--cr: #171718;
 	--n9: #393b3b;
 	--cc: #67635b;
 	--u9: #aca693;
 	--l9: #d8d2c3;
 	--cp: #e1dbd1;
-
 	--p3: #bc251e;
+
+	/* sp */
+	--gsx: #b3b5b4;
+	--gtd: #7d7e7c;
+	--bbi: #283153;
+	--yy: #efcd1b;
 
 	/* type & line scale */
 	--scale-t-xs: 0.625rem;
