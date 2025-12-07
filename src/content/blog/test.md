@@ -21,3 +21,9 @@ plain text is here
 ```
 code block. copyable
 ```
+
+[link](example.com)
+
+blahblahblah [^1]
+
+[^1] here is the footnote
