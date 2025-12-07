@@ -1,7 +1,9 @@
 ---
+title: "here is the test"
+slug: "test"
 description: ""
 date: 2025-12-07
-draft: false
+draft: true
 ---
 
 # this is h1
