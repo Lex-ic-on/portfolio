@@ -1,5 +1,5 @@
 ---
-title: "天キー Vol.9に参加した"
+title: "天キー Vol.9に参加しました"
 slug: "tenkey-9"
 description: ""
 date: 2025-12-10
@@ -10,7 +10,7 @@ draft: false
 
 アドカレの記事っつったってただのブログなんですけどね
 
-## 天キーに参加した
+## 天キーに参加しました
 
 [天下一キーボードわいわい会](https://tenkey.connpass.com/) （天キー）Vol.9に参加しました。
 
